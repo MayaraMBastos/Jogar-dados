@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="icon" href="icone.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Calcular IMC</title>
+</head>
+<body>
+
+<div style="margin-top: 10%" class="container">
+    <h1 class="text-center">Simulador de Dados</h1>
+    <form action="/" method="post">
+        <div class="input-group mb-3">
+            <input type="text" name="qtdDados" id="qtdDados" class="form-control"  placeholder="Quantidade de Dados" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="sp_qtdDados">Dados</span>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" name="qtdFaces" id="qtdFaces" class="form-control" placeholder="Quantidade de Faces" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="sp_qtdFaces">Faces</span>
+        </div>
+        <div class=" text-center">
+            <input value="Jogar" type="submit" class="btn btn-primary ">
+        </div>
+    </form>
+
+    <!-- tabelas-->
+
+    <div class="row" style="margin-top: 10% ; margin-bottom : 10%" th:if="${soma}">
+        <div class="col-sm-6 text-center">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Dados</th>
+                    <th scope="col">Resultado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="dado, cont :${dados}">
+                    <td th:text="${cont.index + 1}"></td>
+                    <td th:text="${dado}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6 text-center">
+
+            <h2>Soma dos Dados</h2>
+            <h1 th:utext = "${soma}">...soma</h1>
+            <h2>Maior Resultado</h2>
+            <h1 th:utext = "${maior}">...soma</h1>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
